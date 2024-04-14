@@ -7,7 +7,7 @@ output:
     toc_float: yes
     keep_md: true
 date: '2024-04-13'
-author: 'David'
+author: 'David Cordas dos Santos'
 ---
 
 ```{r setup, include=FALSE}
@@ -81,8 +81,11 @@ NRM_distinct <- NRM_calc %>%
            Potential_overlap_number) |>
   arrange(Study_Name)
 
+NRM_distinct_main <- NRM_distinct |>
+  select(Study_Name, Entity, Phase, Product, Patient_number, deaths, FU, NRM_Reported, NRM_Timepoint, NRM_calculated, Line, Inclusion_end_until_20)
 
-write.xlsx(NRM_distinct, file = "NRM_distinct_revision.xlsx", rowNames = FALSE, keepNA = T)
+write_csv(NRM_distinct_main, "Output_data/Study_overview_main_tables.csv")
+
 
 NRM_distinct |>
   filter(Product != "Axi-cel+Tisa-cel" | Product != "Ide-cel+Cilta-cel")|>
@@ -361,11 +364,6 @@ NRM_distinct |>
   ungroup() |>
   dplyr::summarise(median(FU))
 
-
-forest(NRM_meta_FU_LBCL, overall = T, layout = "JAMA", pooled.events = T,
-       xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
-       file = "Figures/SG_FU_LBCL.svg", print.subgroup.name = F, pscale = 100)
 
 NRM_meta_FU_MM <- metaprop(event = deaths, n = Patient_number, studlab = Study_Name, 
                            data = NRM_distinct_FU, method = "GLMM", subgroup = ifelse(FU > 13.3, "above median FU for MM", "below median FU for MM"),
@@ -999,13 +997,13 @@ NRM_distinct |>
 
 ```{r}
 forest(NRM_meta_setting, overall = T, pooled.events = T,
-       xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
+       xlab = "NRM point estimate", weight.study = "random", 
+       method.ci = "WS", common = F, random = T, smlab = "", digits = 3,
        xlim = c(0,0.25), leftcols = c("studlab", "event", "n", "effect", "ci"),
        rightcols = F, zero.pval = T, JAMA.pval = T, col.square = "darkblue",
        col.square.lines = "darkblue", col.diamond.random = "#73C2FB",
        bottom.lr = T, ff.lr = T, print.tau2 = F, header.line = T,
-       width = 10, height = 10, pscale = 100,
+       width = 10, height = 10,
        sortvar = Entity, file = "Figures/SG_Setting.svg")
 ```
 
@@ -1459,13 +1457,13 @@ p2_setting_FU
 
 ```{r}
 forest(NRM_meta_entity, overall = T, pooled.events = T,
-       xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
-       xlim = c(0,25), leftcols = c("studlab", "event", "n", "effect", "ci"),
+       xlab = "NRM point estimate", weight.study = "random", 
+       method.ci = "WS", common = F, random = T, smlab = "", digits = 3,
+       xlim = c(0,0.25), leftcols = c("studlab", "event", "n", "effect", "ci"),
        rightcols = F, zero.pval = T, JAMA.pval = T, col.square = "darkblue",
        col.square.lines = "darkblue", col.diamond.random = "#73C2FB",
        bottom.lr = T, ff.lr = T, print.tau2 = F, header.line = T,
-       width = 10, height = 10, pscale=100, file = "Figures/SG_Entity.svg")
+       width = 10, height = 10, file = "Figures/SG_Entity.svg")
 ```
 
 
@@ -1474,13 +1472,13 @@ forest(NRM_meta_entity, overall = T, pooled.events = T,
 ```{r}
 
 forest(NRM_meta_product, overall = T, pooled.events = T,
-       xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
-       xlim = c(0,25), leftcols = c("studlab", "event", "n", "effect", "ci"),
+       xlab = "NRM point estimate", weight.study = "random", 
+       method.ci = "WS", common = F, random = T, smlab = "", digits = 3,
+       xlim = c(0,0.25), leftcols = c("studlab", "event", "n", "effect", "ci"),
        rightcols = F, zero.pval = T, JAMA.pval = T, col.square = "darkblue",
        col.square.lines = "darkblue", col.diamond.random = "#73C2FB",
        bottom.lr = T, ff.lr = T, print.tau2 = F, header.line = T,
-       width = 10, height = 10, pscale = 100,
+       width = 10, height = 10,
        file = "Figures/SG_Product.svg")
 ```
 

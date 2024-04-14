@@ -7,7 +7,7 @@ output:
     toc_float: yes
     keep_md: true
 date: '2024-04-13'
-author: 'David'
+author: 'David Cordas dos Santos'
 ---
 
 
@@ -102,8 +102,11 @@ NRM_distinct <- NRM_calc %>%
            Potential_overlap_number) |>
   arrange(Study_Name)
 
+NRM_distinct_main <- NRM_distinct |>
+  select(Study_Name, Entity, Phase, Product, Patient_number, deaths, FU, NRM_Reported, NRM_Timepoint, NRM_calculated, Line, Inclusion_end_until_20)
 
-write.xlsx(NRM_distinct, file = "NRM_distinct_revision.xlsx", rowNames = FALSE, keepNA = T)
+write_csv(NRM_distinct_main, "Output_data/Study_overview_main_tables.csv")
+
 
 NRM_distinct |>
   filter(Product != "Axi-cel+Tisa-cel" | Product != "Ide-cel+Cilta-cel")|>
@@ -452,11 +455,6 @@ NRM_distinct |>
 ```
 
 ```r
-forest(NRM_meta_FU_LBCL, overall = T, layout = "JAMA", pooled.events = T,
-       xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
-       file = "Figures/SG_FU_LBCL.svg", print.subgroup.name = F, pscale = 100)
-
 NRM_meta_FU_MM <- metaprop(event = deaths, n = Patient_number, studlab = Study_Name, 
                            data = NRM_distinct_FU, method = "GLMM", subgroup = ifelse(FU > 13.3, "above median FU for MM", "below median FU for MM"),
                            subset = Entity == "MM")
@@ -1219,7 +1217,7 @@ permutest(MM_model)
 ```
 ## 
 ## Test of Moderators (coefficients 2:6):¹
-## F(df1 = 5, df2 = 5) = 7.1760, p-val = 0.0490
+## F(df1 = 5, df2 = 5) = 7.1760, p-val = 0.0610
 ## 
 ## Model Results:
 ## 
@@ -1252,12 +1250,12 @@ permutest(MM_model)
 ## NRM_meta_MM_sp[["data"]][["Inclusion_end_until_20"]]before                         5 
 ## NRM_meta_MM_sp[["data"]][["Line"]]later                                            5 
 ##                                                                                     pval¹ 
-## intrcpt                                                                           0.3000  
-## relevel(factor(NRM_meta_MM_sp[["data"]][["Product"]]), ref = "Cilta-cel")Ide-cel  0.0250  
-## ifelse(NRM_meta_MM_sp[["data"]][["FU"]] > 13.3, 1, 0)                             0.9350  
-## NRM_meta_MM_sp[["data"]][["Setting"]]RW                                           0.2870  
-## NRM_meta_MM_sp[["data"]][["Inclusion_end_until_20"]]before                        0.4340  
-## NRM_meta_MM_sp[["data"]][["Line"]]later                                           0.4450  
+## intrcpt                                                                           0.2870  
+## relevel(factor(NRM_meta_MM_sp[["data"]][["Product"]]), ref = "Cilta-cel")Ide-cel  0.0280  
+## ifelse(NRM_meta_MM_sp[["data"]][["FU"]] > 13.3, 1, 0)                             0.9250  
+## NRM_meta_MM_sp[["data"]][["Setting"]]RW                                           0.2860  
+## NRM_meta_MM_sp[["data"]][["Inclusion_end_until_20"]]before                        0.4730  
+## NRM_meta_MM_sp[["data"]][["Line"]]later                                           0.4500  
 ##                                                                                     ci.lb 
 ## intrcpt                                                                           -2.7470 
 ## relevel(factor(NRM_meta_MM_sp[["data"]][["Product"]]), ref = "Cilta-cel")Ide-cel  -1.3562 
@@ -2089,13 +2087,13 @@ NRM_distinct |>
 
 ```r
 forest(NRM_meta_setting, overall = T, pooled.events = T,
-       xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
+       xlab = "NRM point estimate", weight.study = "random", 
+       method.ci = "WS", common = F, random = T, smlab = "", digits = 3,
        xlim = c(0,0.25), leftcols = c("studlab", "event", "n", "effect", "ci"),
        rightcols = F, zero.pval = T, JAMA.pval = T, col.square = "darkblue",
        col.square.lines = "darkblue", col.diamond.random = "#73C2FB",
        bottom.lr = T, ff.lr = T, print.tau2 = F, header.line = T,
-       width = 10, height = 10, pscale = 100,
+       width = 10, height = 10,
        sortvar = Entity, file = "Figures/SG_Setting.svg")
 ```
 
@@ -2249,7 +2247,7 @@ p3_LBCL_product
 ```
 
 ```
-## Warning: Removed 5 rows containing missing values or values outside the scale range
+## Warning: Removed 4 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
@@ -2634,7 +2632,7 @@ p2_setting
 ```
 
 ```
-## Warning: Removed 1 row containing missing values or values outside the scale range
+## Warning: Removed 2 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
@@ -2688,13 +2686,13 @@ p2_setting_FU
 
 ```r
 forest(NRM_meta_entity, overall = T, pooled.events = T,
-       xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
-       xlim = c(0,25), leftcols = c("studlab", "event", "n", "effect", "ci"),
+       xlab = "NRM point estimate", weight.study = "random", 
+       method.ci = "WS", common = F, random = T, smlab = "", digits = 3,
+       xlim = c(0,0.25), leftcols = c("studlab", "event", "n", "effect", "ci"),
        rightcols = F, zero.pval = T, JAMA.pval = T, col.square = "darkblue",
        col.square.lines = "darkblue", col.diamond.random = "#73C2FB",
        bottom.lr = T, ff.lr = T, print.tau2 = F, header.line = T,
-       width = 10, height = 10, pscale=100, file = "Figures/SG_Entity.svg")
+       width = 10, height = 10, file = "Figures/SG_Entity.svg")
 ```
 
 
@@ -2703,13 +2701,13 @@ forest(NRM_meta_entity, overall = T, pooled.events = T,
 
 ```r
 forest(NRM_meta_product, overall = T, pooled.events = T,
-       xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
-       xlim = c(0,25), leftcols = c("studlab", "event", "n", "effect", "ci"),
+       xlab = "NRM point estimate", weight.study = "random", 
+       method.ci = "WS", common = F, random = T, smlab = "", digits = 3,
+       xlim = c(0,0.25), leftcols = c("studlab", "event", "n", "effect", "ci"),
        rightcols = F, zero.pval = T, JAMA.pval = T, col.square = "darkblue",
        col.square.lines = "darkblue", col.diamond.random = "#73C2FB",
        bottom.lr = T, ff.lr = T, print.tau2 = F, header.line = T,
-       width = 10, height = 10, pscale = 100,
+       width = 10, height = 10,
        file = "Figures/SG_Product.svg")
 ```
 
@@ -2747,11 +2745,6 @@ p6_product <- p6_product +
            size = 4, color = "black")
 
 p6_product
-```
-
-```
-## Warning: Removed 1 row containing missing values or values outside the scale range
-## (`geom_point()`).
 ```
 
 ![](CART_NRM_Code_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
@@ -2888,6 +2881,11 @@ p2_LBCL_setting <- p2_LBCL_setting +
 p2_LBCL_setting
 ```
 
+```
+## Warning: Removed 1 row containing missing values or values outside the scale range
+## (`geom_point()`).
+```
+
 ![](CART_NRM_Code_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
 
 ```r
@@ -2969,11 +2967,6 @@ p2_inclusion_LBCL <- p2_inclusion_LBCL +
 p2_inclusion_LBCL
 ```
 
-```
-## Warning: Removed 1 row containing missing values or values outside the scale range
-## (`geom_point()`).
-```
-
 ![](CART_NRM_Code_files/figure-html/unnamed-chunk-26-3.png)<!-- -->
 
 ```r
@@ -3008,6 +3001,11 @@ p2_LBCL_line <- p2_LBCL_line +
            size = 4, color = "black") 
 
 p2_LBCL_line
+```
+
+```
+## Warning: Removed 1 row containing missing values or values outside the scale range
+## (`geom_point()`).
 ```
 
 ![](CART_NRM_Code_files/figure-html/unnamed-chunk-26-4.png)<!-- -->
@@ -3321,7 +3319,7 @@ save_plot(plots_pq, prefix = "Figures/")
 ```
 
 ```
-## Warning: Removed 3 rows containing missing values or values outside the scale range
+## Warning: Removed 4 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
@@ -3329,14 +3327,7 @@ save_plot(plots_pq, prefix = "Figures/")
 plot_pattern_sq <- "^psq_.*"
 plots_psq <- mget(ls(pattern = plot_pattern_sq))
 save_plot(plots_psq, prefix = "Figures/",width = 6)
-```
 
-```
-## Warning: Removed 1 row containing missing values or values outside the scale range
-## (`geom_point()`).
-```
-
-```r
 plot_pattern_mr <- "^pmr_.*"
 plots_pmr <- mget(ls(pattern = plot_pattern_mr))
 save_plot(plots_pmr, prefix = "Figures/",height = 3.5, width = 4.2)
@@ -3348,11 +3339,6 @@ save_plot(plots_p1, prefix = "Figures/",width = 2)
 plot_pattern_p2 <- "^p2_.*"
 plots_p2 <- mget(ls(pattern = plot_pattern_p2))
 save_plot(plots_p2, prefix = "Figures/",width = 2.5)
-```
-
-```
-## Warning: Removed 2 rows containing missing values or values outside the scale range
-## (`geom_point()`).
 ```
 
 ```
@@ -3377,14 +3363,7 @@ save_plot(plots_p2, prefix = "Figures/",width = 2.5)
 
 ```
 ## Warning in sprintf("p = %5.4f", as.numeric("p")): NAs introduced by coercion
-```
 
-```
-## Warning: Removed 2 rows containing missing values or values outside the scale range
-## (`geom_point()`).
-```
-
-```
 ## Warning in sprintf("p = %5.4f", as.numeric("p")): NAs introduced by coercion
 ```
 
@@ -3410,7 +3389,7 @@ save_plot(plots_p3, prefix = "Figures/", width = 3.5)
 ```
 
 ```
-## Warning: Removed 5 rows containing missing values or values outside the scale range
+## Warning: Removed 4 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
