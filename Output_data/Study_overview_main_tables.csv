@@ -1,0 +1,53 @@
+Study_Name,Entity,Phase,Product,Patient_number,deaths,FU,NRM_Reported,NRM_Timepoint,NRM_calculated,Line,Inclusion_end_until_20
+Abramson_2020,LBCL,Phase I,Liso-cel,269,7,18.8,NA,NA,0.026022304832713755,later,before
+Akthar_2023,MM,RW,Ide-cel+Cilta-cel,139,7,6.7,0.049,NA,0.050359712230215826,later,after
+Berning_2024,LBCL,RW,Tisa-cel+Axi-cel,172,30,8.3,NA,NA,0.1744186046511628,later,after
+Bethge_2022_A,LBCL,RW,Axi-cel,183,15,11,0.104,12,0.08196721311475409,later,after
+Bethge_2022_B,LBCL,RW,Tisa-cel,173,6,11,0.035,12,0.03468208092485549,later,after
+Bishop_2022,LBCL,Phase III,Tisa-cel,155,9,40.3,NA,NA,0.05806451612903226,earlier,after
+Caillot_2024,MM,RW,Ide-cel,24,1,15.2,NA,NA,0.041666666666666664,later,after
+Chiappella_2024,LBCL,RW,Axi-cel,260,6,3,0.031,3,0.023076923076923078,later,after
+Chong_2024,MCL,RW,Brexu-cel,17,4,24.5,NA,NA,0.23529411764705882,later,after
+De_Philippis_2024,LBCL,RW,Tisa-cel,43,0,19.1,NA,NA,0,later,after
+Dores_2021,LBCL,RW,Tisa-cel,197,8,NA,NA,NA,0.04060913705583756,later,before
+Dreyling_2024,IL,Phase II,Tisa-cel,97,5,29,NA,NA,0.05154639175257732,later,after
+Ferreri_Hansen_2023_A,MM,RW,Ide-cel,50,4,4.5,NA,NA,0.08,later,after
+Ferreri_Hansen_2023_B,MM,RW,Ide-cel,153,8,6,NA,NA,0.05228758169934641,later,after
+Fischer_2024,MM,RW,Ide-cel,27,1,5.9,NA,NA,0.037037037037037035,later,NA
+Grana_2021,LBCL,RW,Axi-cel,37,3,11,NA,NA,0.08108108108108109,later,before
+Hamilton_2024_A,LBCL,RW,Axi-cel,191,13,13.77,NA,NA,0.06806282722513089,later,after
+Hamilton_2024_B,IL,RW,Axi-cel,20,1,14.46,NA,NA,0.05,later,after
+Houot_2023,LBCL,Phase II,Axi-cel,62,7,12,NA,NA,0.11290322580645161,earlier,after
+Iacoboni_2022,MCL,RW,Brexu-cel,33,5,10.1,NA,NA,0.15151515151515152,later,after
+Iovino_2022,LBCL,RW,Axi-cel,60,3,4.8,NA,NA,0.05,later,after
+Jacobson_2022_A,IL,Phase II,Axi-cel,148,9,17.5,NA,NA,0.060810810810810814,later,after
+Jacobson_2022_B,LBCL,RW,Axi-cel,1297,141,12.9,0.03,3,0.1087124132613724,later,after
+Kamdar_2022,LBCL,Phase III,Liso-cel,92,5,6.2,NA,NA,0.05434782608695652,earlier,after
+Kato_2023,LBCL,Phase II,Axi-cel,16,0,13.4,NA,NA,0,later,after
+Kuhnl_2022_A,LBCL,RW,Tisa-cel,76,2,13.9,0.031,12,0.02631578947368421,later,after
+Kuhnl_2022_B,LBCL,RW,Axi-cel,224,19,13.9,0.087,12,0.08482142857142858,later,after
+Kwon_2023_A,LBCL,RW,Axi-cel,152,9,9.2,0.07,12,0.05921052631578947,later,after
+Kwon_2023_B,LBCL,RW,Tisa-cel,155,5,9.2,0.04,12,0.03225806451612903,later,after
+Lemoine_2023,LBCL,RW,Tisa-cel+Axi-cel,957,48,12.4,0.05,12,0.050156739811912224,later,after
+Lin_2023,MM,Phase I,Ide-cel,62,2,18.1,NA,NA,0.03225806451612903,later,before
+Martin_2023,MM,Phase I-II,Cilta-cel,97,16,28,NA,NA,0.16494845360824742,later,before
+Mi_2022,MM,Phase II,Cilta-cel,48,9,18,NA,NA,0.1875,later,after
+Munshi_2021,MM,Phase II,Ide-cel,128,9,13.3,NA,NA,0.0703125,later,before
+Nastoupil_2020,LBCL,RW,Axi-cel,275,12,12.9,0.044,12,0.04363636363636364,later,before
+Neelapu_2022,LBCL,Phase II,Axi-cel,40,2,15.9,NA,NA,0.05,earlier,after
+Neelapu_2023,LBCL,Phase I-II,Axi-cel,101,13,63.1,NA,NA,0.12871287128712872,later,before
+Rejeski_2022_A,LBCL,RW,Axi-cel,17,2,3,NA,NA,0.11764705882352941,later,after
+Rejeski_2022_B,LBCL,RW,Tisa-cel,35,1,3,NA,NA,0.02857142857142857,later,after
+Rejeski_2023_A,MM,RW,Ide-cel,57,3,7.9,NA,NA,0.05263157894736842,later,after
+Rejeski_2023_B,MM,RW,Cilta-cel,7,1,7.9,NA,NA,0.14285714285714285,later,after
+Rejeski_2023_C,MCL,RW,Brexu-cel,54,4,15.4,NA,NA,0.07407407407407407,later,after
+Riedell_2022_B,LBCL,RW,Tisa-cel,92,7,13.8,0.07,12,0.07608695652173914,later,before
+Rodriguez-Otero_2023,MM,Phase III,Ide-cel,225,18,18.6,NA,NA,0.08,earlier,after
+San_Miguel_2023,MM,Phase III,Cilta-cel,176,24,15.9,NA,NA,0.13636363636363635,earlier,after
+Sehgal_2022,LBCL,Phase II,Liso-cel,61,4,13,NA,NA,0.06557377049180328,earlier,after
+Spanjaart_2023,LBCL,RW,Axi-cel,145,11,13,0.05,12,0.07586206896551724,later,after
+Trando_2023,LBCL,RW,Tisa-cel+Axi-cel,66,8,16.3,NA,NA,0.12121212121212122,later,after
+Wang_2023_A,MCL,Phase II,Brexu-cel,68,5,35.6,NA,NA,0.07352941176470588,later,before
+Wang_2023_B,MCL,RW,Brexu-cel,168,18,14.3,0.091,12,0.10714285714285714,later,after
+Westin_2023,LBCL,Phase III,Axi-cel,170,23,47.2,NA,NA,0.13529411764705881,earlier,before
+Wudhikarn_2023,LBCL,RW,Tisa-cel+Axi-cel,33,1,16,NA,NA,0.030303030303030304,later,after
