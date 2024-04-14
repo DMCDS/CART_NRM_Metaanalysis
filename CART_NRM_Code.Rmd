@@ -1000,12 +1000,12 @@ NRM_distinct |>
 ```{r}
 forest(NRM_meta_setting, overall = T, pooled.events = T,
        xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 3,
+       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
        xlim = c(0,0.25), leftcols = c("studlab", "event", "n", "effect", "ci"),
        rightcols = F, zero.pval = T, JAMA.pval = T, col.square = "darkblue",
        col.square.lines = "darkblue", col.diamond.random = "#73C2FB",
        bottom.lr = T, ff.lr = T, print.tau2 = F, header.line = T,
-       width = 10, height = 10, 
+       width = 10, height = 10, pscale = 100,
        sortvar = Entity, file = "Figures/SG_Setting.svg")
 ```
 

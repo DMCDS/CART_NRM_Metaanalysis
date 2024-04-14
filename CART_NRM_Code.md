@@ -1219,7 +1219,7 @@ permutest(MM_model)
 ```
 ## 
 ## Test of Moderators (coefficients 2:6):¹
-## F(df1 = 5, df2 = 5) = 7.1760, p-val = 0.0560
+## F(df1 = 5, df2 = 5) = 7.1760, p-val = 0.0490
 ## 
 ## Model Results:
 ## 
@@ -1252,12 +1252,12 @@ permutest(MM_model)
 ## NRM_meta_MM_sp[["data"]][["Inclusion_end_until_20"]]before                         5 
 ## NRM_meta_MM_sp[["data"]][["Line"]]later                                            5 
 ##                                                                                     pval¹ 
-## intrcpt                                                                           0.2990  
-## relevel(factor(NRM_meta_MM_sp[["data"]][["Product"]]), ref = "Cilta-cel")Ide-cel  0.0270  
-## ifelse(NRM_meta_MM_sp[["data"]][["FU"]] > 13.3, 1, 0)                             0.9530  
-## NRM_meta_MM_sp[["data"]][["Setting"]]RW                                           0.2860  
-## NRM_meta_MM_sp[["data"]][["Inclusion_end_until_20"]]before                        0.4630  
-## NRM_meta_MM_sp[["data"]][["Line"]]later                                           0.4620  
+## intrcpt                                                                           0.3000  
+## relevel(factor(NRM_meta_MM_sp[["data"]][["Product"]]), ref = "Cilta-cel")Ide-cel  0.0250  
+## ifelse(NRM_meta_MM_sp[["data"]][["FU"]] > 13.3, 1, 0)                             0.9350  
+## NRM_meta_MM_sp[["data"]][["Setting"]]RW                                           0.2870  
+## NRM_meta_MM_sp[["data"]][["Inclusion_end_until_20"]]before                        0.4340  
+## NRM_meta_MM_sp[["data"]][["Line"]]later                                           0.4450  
 ##                                                                                     ci.lb 
 ## intrcpt                                                                           -2.7470 
 ## relevel(factor(NRM_meta_MM_sp[["data"]][["Product"]]), ref = "Cilta-cel")Ide-cel  -1.3562 
@@ -2090,12 +2090,12 @@ NRM_distinct |>
 ```r
 forest(NRM_meta_setting, overall = T, pooled.events = T,
        xlab = "NRM point estimate [%]", weight.study = "random", 
-       method.ci = "WS", common = F, random = T, smlab = "", digits = 3,
+       method.ci = "WS", common = F, random = T, smlab = "", digits = 1,
        xlim = c(0,0.25), leftcols = c("studlab", "event", "n", "effect", "ci"),
        rightcols = F, zero.pval = T, JAMA.pval = T, col.square = "darkblue",
        col.square.lines = "darkblue", col.diamond.random = "#73C2FB",
        bottom.lr = T, ff.lr = T, print.tau2 = F, header.line = T,
-       width = 10, height = 10, 
+       width = 10, height = 10, pscale = 100,
        sortvar = Entity, file = "Figures/SG_Setting.svg")
 ```
 
@@ -2201,6 +2201,11 @@ psq_entity <- psq_entity +
 psq_entity
 ```
 
+```
+## Warning: Removed 1 row containing missing values or values outside the scale range
+## (`geom_point()`).
+```
+
 ![](CART_NRM_Code_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 ### Fig. 3C - Product comparison in LBCL
@@ -2244,7 +2249,7 @@ p3_LBCL_product
 ```
 
 ```
-## Warning: Removed 4 rows containing missing values or values outside the scale range
+## Warning: Removed 5 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
@@ -2745,7 +2750,7 @@ p6_product
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values or values outside the scale range
+## Warning: Removed 1 row containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
@@ -2883,11 +2888,6 @@ p2_LBCL_setting <- p2_LBCL_setting +
 p2_LBCL_setting
 ```
 
-```
-## Warning: Removed 2 rows containing missing values or values outside the scale range
-## (`geom_point()`).
-```
-
 ![](CART_NRM_Code_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
 
 ```r
@@ -3008,11 +3008,6 @@ p2_LBCL_line <- p2_LBCL_line +
            size = 4, color = "black") 
 
 p2_LBCL_line
-```
-
-```
-## Warning: Removed 1 row containing missing values or values outside the scale range
-## (`geom_point()`).
 ```
 
 ![](CART_NRM_Code_files/figure-html/unnamed-chunk-26-4.png)<!-- -->
@@ -3326,7 +3321,7 @@ save_plot(plots_pq, prefix = "Figures/")
 ```
 
 ```
-## Warning: Removed 4 rows containing missing values or values outside the scale range
+## Warning: Removed 3 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
@@ -3363,9 +3358,15 @@ save_plot(plots_p2, prefix = "Figures/",width = 2.5)
 ```
 ## Warning: Removed 1 row containing missing values or values outside the scale range
 ## (`geom_point()`).
-## Removed 1 row containing missing values or values outside the scale range
+```
+
+```
+## Warning: Removed 2 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
-## Removed 1 row containing missing values or values outside the scale range
+```
+
+```
+## Warning: Removed 1 row containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
@@ -3379,7 +3380,7 @@ save_plot(plots_p2, prefix = "Figures/",width = 2.5)
 ```
 
 ```
-## Warning: Removed 1 row containing missing values or values outside the scale range
+## Warning: Removed 2 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
@@ -3409,7 +3410,7 @@ save_plot(plots_p3, prefix = "Figures/", width = 3.5)
 ```
 
 ```
-## Warning: Removed 6 rows containing missing values or values outside the scale range
+## Warning: Removed 5 rows containing missing values or values outside the scale range
 ## (`geom_point()`).
 ```
 
